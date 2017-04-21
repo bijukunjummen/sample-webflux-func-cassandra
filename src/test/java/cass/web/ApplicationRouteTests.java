@@ -14,7 +14,7 @@ import java.util.UUID;
 import static org.mockito.Mockito.*;
 
 
-public class SampleSpringWebfluxApplicationTests {
+public class ApplicationRouteTests {
 
     private WebTestClient client;
     private HotelService hotelService;
