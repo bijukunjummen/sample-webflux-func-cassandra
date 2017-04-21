@@ -1,4 +1,4 @@
-sThis is a sample application demonstrating Spring 5 Webflux framework with endpoints written in a functional style as opposed to an annotation based style demonstrated http://github.com/bijukunjummen/sample-webflux-annot-cassandra[here].
+This is a sample application demonstrating Spring 5 Webflux framework with endpoints written in a functional style as opposed to an annotation based style demonstrated http://github.com/bijukunjummen/sample-webflux-annot-cassandra[here].
 It uses Spring Data Cassandra's support for reactive libraries to provide an end to end reactive flow.
 
 = Install a local Cassandra
@@ -7,7 +7,7 @@ The simplest way to install Cassandra is via the excellent https://github.com/pc
 
 If you are using a Mac-OSX, you may have to add more loopback interfaces this way:
 
-[source]
+[source, bash]
 ----
 sudo ifconfig lo0 alias 127.0.0.2 up
 sudo ifconfig lo0 alias 127.0.0.3 up
@@ -15,7 +15,7 @@ sudo ifconfig lo0 alias 127.0.0.3 up
 
 And bring up a 3 node Cassandra 3.9 based cluster:
 
-[source]
+[source, bash]
 ----
 ccm create test -v 3.9 -n 3 -s --vnodes
 ----
@@ -23,14 +23,14 @@ ccm create test -v 3.9 -n 3 -s --vnodes
 
 Connect to one of the nodes:
 
-[source]
+[source, bash]
 ----
 ccm node1 cqlsh
 ----
 
 And run these cql statements
 
-[source]
+[source, sql]
 ----
 
 CREATE KEYSPACE IF NOT EXISTS sample WITH replication = {'class':'SimpleStrategy', 'replication_factor':1};
@@ -66,7 +66,7 @@ WITH CLUSTERING ORDER BY (name DESC)
 
 = Run the App
 
-[source]
+[source, bash]
 ----
 ./gradlew clean bootRun
 ----
@@ -75,7 +75,7 @@ WITH CLUSTERING ORDER BY (name DESC)
 
 Assuming that https://httpie.org/[httpie] is installed in your machine
 
-[source]
+[source, bash]
 ----
 http POST 'http://localhost:8080/hotels' state="WA" name="A Sample Hotel" zip="00001" address="Address 1"
 http POST 'http://localhost:8080/hotels' state="WA" name="B Sample Hotel" zip="00002" address="Address 2"
@@ -84,7 +84,7 @@ http POST 'http://localhost:8080/hotels' state="OR" name="C Sample Hotel" zip="0
 
 OR with CURL
 
-[source]
+[source, bash]
 ----
 curl -X "POST" "http://localhost:8080/hotels" \
      -H "Accept: application/json" \
@@ -122,26 +122,26 @@ curl -X "POST" "http://localhost:8080/hotels" \
 Get hotels with names starting with "A" - internally makes use of a table with duplicated content,
 maintained with first letter as the partition key
 
-[source]
+[source, bash]
 ----
 http GET 'http://localhost:8080/hotels/startingwith/A'
 ----
 
 OR with Curl
 
-[source]
+[source, bash]
 ----
 curl -X "GET" "http://localhost:8080/hotels/startingwith/A" \
      -H "Accept: application/json"
 ----
 
 Get Hotels from State - makes use of a materialized view
-[source]
+[source, bash]
 ----
 http GET 'http://localhost:8080/hotels/fromstate/OR'
 ----
 
-[source]
+[source, bash]
 ----
 curl -X "GET" "http://localhost:8080/hotels/fromstate/OR" \
      -H "Accept: application/json"
@@ -152,12 +152,12 @@ curl -X "GET" "http://localhost:8080/hotels/fromstate/OR" \
 
 Delete Hotels by id
 
-[source]
+[source, bash]
 ----
 http DELETE 'http://localhost:8080/hotels/<id>'
 ----
 
-[source]
+[source, bash]
 ----
 curl -X "DELETE" "http://localhost:8080/hotels/<id>" -H "Accept: application/json"
 ----
