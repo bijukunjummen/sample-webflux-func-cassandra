@@ -1,6 +1,8 @@
 This is a sample application demonstrating Spring 5 Webflux framework with endpoints written in a functional style as opposed to an annotation based style demonstrated http://github.com/bijukunjummen/sample-webflux-annot-cassandra[here].
 It uses Spring Data Cassandra's support for reactive libraries to provide an end to end reactive flow.
 
+A blog post accompanying this sample is http://www.java-allandsundry.com/2017/04/spring-web-flux-functional-style-with.html[here]
+
 = Install a local Cassandra
 
 The simplest way to install Cassandra is via the excellent https://github.com/pcmanus/ccm[ccm] tool.
