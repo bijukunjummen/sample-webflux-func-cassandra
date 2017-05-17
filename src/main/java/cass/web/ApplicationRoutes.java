@@ -4,7 +4,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.server.RouterFunction;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
-import static org.springframework.web.reactive.function.server.RouterFunctions.*;
+import static org.springframework.web.reactive.function.server.RouterFunctions.nest;
+import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 public interface ApplicationRoutes {
     static RouterFunction<?> routes(HotelHandler hotelHandler) {
@@ -18,4 +19,5 @@ public interface ApplicationRoutes {
                                 .andRoute(GET("/fromstate/{state}"), hotelHandler::findHotelsInState)
                 ));
     }
+    
 }

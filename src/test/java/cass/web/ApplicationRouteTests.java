@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import static org.springframework.web.reactive.function.BodyInserters.*;
 
 import java.util.UUID;
 
@@ -57,7 +58,7 @@ public class ApplicationRouteTests {
     public void testHotelSave() throws Exception {
         Hotel toBeSaved = new Hotel(sampleUUID, "test");
         this.client.post().uri("/hotels")
-                .body(toBeSaved)
+                .body(fromObject(toBeSaved))
                 .exchange()
                 .expectStatus().isCreated()
                 .expectBody(Hotel.class)
@@ -70,7 +71,7 @@ public class ApplicationRouteTests {
     public void testHotelUpdate() throws Exception {
         Hotel toBeUpdated = new Hotel(sampleUUID, "test");
         this.client.put().uri("/hotels")
-                .body(toBeUpdated)
+                .body(fromObject(toBeUpdated))
                 .exchange()
                 .expectStatus().isCreated()
                 .expectBody(Hotel.class)
