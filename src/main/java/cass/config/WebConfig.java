@@ -1,6 +1,7 @@
 package cass.config;
 
 
+import cass.web.AppRoutesKt;
 import cass.web.ApplicationRoutes;
 import cass.web.HotelHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,6 @@ public class WebConfig {
 
     @Bean
     public RouterFunction<?> routerFunction() {
-        return ApplicationRoutes.routes(this.hotelHandler);
+        return AppRoutesKt.routes(this.hotelHandler);
     }
 }

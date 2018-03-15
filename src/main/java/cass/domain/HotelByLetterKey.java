@@ -1,9 +1,9 @@
 package cass.domain;
 
-import org.springframework.cassandra.core.Ordering;
-import org.springframework.cassandra.core.PrimaryKeyType;
-import org.springframework.data.cassandra.mapping.PrimaryKeyClass;
-import org.springframework.data.cassandra.mapping.PrimaryKeyColumn;
+import org.springframework.data.cassandra.core.cql.Ordering;
+import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
+import org.springframework.data.cassandra.core.mapping.PrimaryKeyClass;
+import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 
 import java.io.Serializable;
 import java.util.UUID;
